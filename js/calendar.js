@@ -1,61 +1,52 @@
-const calendarGrid = document.getElementById("calendarGrid");
-const calTitle = document.getElementById("calTitle");
+const grid = document.getElementById("calendarGrid");
+const monthLabel = document.getElementById("calMonth");
 
-const prevBtn = document.getElementById("calPrev");
-const nextBtn = document.getElementById("calNext");
+const prev = document.getElementById("calPrev");
+const next = document.getElementById("calNext");
 
-const monthNames = [
+const months = [
   "Jaanuar","Veebruar","Märts","Aprill","Mai","Juuni",
   "Juuli","August","September","Oktoober","November","Detsember"
 ];
 
-let current = new Date();
+let date = new Date(2026, 0);
 
-/* НАСТРОЙКА РАСПИСАНИЯ */
-const rules = {
-  default: "open",
-  weekends: "late",
-  closedMonths: [8,10,11] // september, november, december
+/* РАСПИСАНИЕ */
+const schedule = {
+  default: "normal",
+  lateDays: [13,20,27],
 };
 
-function renderCalendar() {
-  calendarGrid.innerHTML = "";
+function render() {
+  grid.innerHTML = "";
+  const y = date.getFullYear();
+  const m = date.getMonth();
 
-  const year = current.getFullYear();
-  const month = current.getMonth();
+  monthLabel.textContent = `${months[m]} ${y}`;
 
-  calTitle.textContent = `${monthNames[month]} ${year}`;
-
-  const firstDay = new Date(year, month, 1).getDay() || 7;
-  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const firstDay = new Date(y, m, 1).getDay() || 7;
+  const days = new Date(y, m + 1, 0).getDate();
 
   for (let i = 1; i < firstDay; i++) {
-    calendarGrid.innerHTML += `<div class="calendar-day empty"></div>`;
+    grid.innerHTML += `<div class="calendar-day empty"></div>`;
   }
 
-  for (let day = 1; day <= daysInMonth; day++) {
-    const date = new Date(year, month, day);
-    let status = rules.default;
+  for (let d = 1; d <= days; d++) {
+    let type = schedule.default;
+    if (schedule.lateDays.includes(d)) type = "late";
 
-    if (rules.closedMonths.includes(month)) status = "closed";
-    if (date.getDay() === 6 || date.getDay() === 0) status = rules.weekends;
-
-    calendarGrid.innerHTML += `
-      <div class="calendar-day ${status}" title="${status}">
-        ${day}
-      </div>
-    `;
+    grid.innerHTML += `<div class="calendar-day ${type}">${d}</div>`;
   }
 }
 
-prevBtn.onclick = () => {
-  current.setMonth(current.getMonth() - 1);
-  renderCalendar();
+prev.onclick = () => {
+  date.setMonth(date.getMonth() - 1);
+  render();
 };
 
-nextBtn.onclick = () => {
-  current.setMonth(current.getMonth() + 1);
-  renderCalendar();
+next.onclick = () => {
+  date.setMonth(date.getMonth() + 1);
+  render();
 };
 
-renderCalendar();
+render();
