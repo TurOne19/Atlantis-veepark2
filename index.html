@@ -180,12 +180,14 @@
 </section>
 
 <!-- ================= CALENDAR PREVIEW ================= -->
-<section id="calendar" class="calendar-section">
-  <div class="calendar-container">
+<section class="calendar-section">
+  <h2 class="calendar-title">Lahtioleku kalender</h2>
+
+  <div class="calendar-card">
     <div class="calendar-header">
-      <button id="calPrev">‹</button>
-      <h2 id="calTitle"></h2>
-      <button id="calNext">›</button>
+      <button id="calPrev" class="cal-arrow">‹</button>
+      <div id="calMonth" class="cal-month"></div>
+      <button id="calNext" class="cal-arrow">›</button>
     </div>
 
     <div class="calendar-weekdays">
@@ -196,14 +198,14 @@
     <div id="calendarGrid" class="calendar-grid"></div>
 
     <div class="calendar-legend">
-      <div><span class="dot open"></span> Avatud 10:00–22:00</div>
-      <div><span class="dot late"></span> Avatud 14:00–22:00</div>
-      <div><span class="dot short"></span> Avatud 10:00–18:00</div>
-      <div><span class="dot closed"></span> Suletud</div>
+      <div><span class="legend-box closed"></span> Suletud</div>
+      <div><span class="legend-box late"></span> 14:00–22:00</div>
+      <div><span class="legend-box short"></span> 10:00–18:00</div>
+      <div><span class="legend-box normal"></span> 10:00–22:00</div>
+      <div><span class="legend-box extended"></span> 10:00–21:00</div>
     </div>
   </div>
 </section>
-
 <!-- ================= BIRTHDAYS ================= -->
 <section class="section section-light">
     <div class="container">
