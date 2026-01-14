@@ -180,20 +180,28 @@
 </section>
 
 <!-- ================= CALENDAR PREVIEW ================= -->
-<section class="section">
-    <div class="container">
-        <h2 class="section-title">Lahtiolekuajad</h2>
-
-        <p class="section-text">
-            Aquapargi lahtiolekuajad võivad varieeruda sõltuvalt hooajast,
-            nädalapäevast ja erilistest sündmustest.
-            Täpsema info leiad meie kalendrist.
-        </p>
-
-        <div class="section-cta">
-            <a href="/calendar/index.html" class="btn btn-primary">Ava kalender</a>
-        </div>
+<section id="calendar" class="calendar-section">
+  <div class="calendar-container">
+    <div class="calendar-header">
+      <button id="calPrev">‹</button>
+      <h2 id="calTitle"></h2>
+      <button id="calNext">›</button>
     </div>
+
+    <div class="calendar-weekdays">
+      <span>E</span><span>T</span><span>K</span><span>N</span>
+      <span>R</span><span>L</span><span>P</span>
+    </div>
+
+    <div id="calendarGrid" class="calendar-grid"></div>
+
+    <div class="calendar-legend">
+      <div><span class="dot open"></span> Avatud 10:00–22:00</div>
+      <div><span class="dot late"></span> Avatud 14:00–22:00</div>
+      <div><span class="dot short"></span> Avatud 10:00–18:00</div>
+      <div><span class="dot closed"></span> Suletud</div>
+    </div>
+  </div>
 </section>
 
 <!-- ================= BIRTHDAYS ================= -->
