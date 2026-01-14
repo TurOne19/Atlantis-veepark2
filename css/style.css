@@ -487,4 +487,37 @@ body {
     .hero-content p {
         font-size: 18px;
     }
+/* ===== ADMIN CALENDAR ===== */
+
+.admin-controls {
+  margin-top: 32px;
+  text-align: center;
+}
+
+.admin-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin: 16px 0;
+}
+
+.admin-buttons .btn {
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+}
+
+.btn.closed { background:#9ca3af; }
+.btn.short { background:#ef4444; }
+.btn.normal { background:#facc15; color:#1f2937; }
+.btn.late { background:#6d28d9; }
+.btn.extended { background:#14b8a6; }
+
+.calendar-day.selected {
+  outline: 3px solid #0ea5e9;
+}
 }
