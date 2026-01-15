@@ -2,275 +2,1487 @@
 <html lang="et">
 <head>
     <meta charset="UTF-8">
-    <title>Atlantis H2O Aquapark – Viimsi SPA</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aquapark</title>
 
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --blue: #0066cc;
+            --blue2: #0080ff;
+            --light: #e6f2ff;
+            --dark: #222;
+            --orange: #ff6b35;
+            --white: #fff;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: var(--dark);
+            background: #fff;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(135deg, var(--blue), var(--blue2));
+            z-index: 1000;
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: #fff;
+            font-size: 26px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 15px;
+        }
+
+        section {
+            padding: 100px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero {
+            height: 100vh;
+            background: linear-gradient(
+                rgba(0,0,0,0.4),
+                rgba(0,0,0,0.4)
+            );
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+        }
+
+        .hero p {
+            font-size: 22px;
+            margin: 20px 0;
+        }
+
+        .btn {
+            background: var(--orange);
+            color: #fff;
+            padding: 15px 40px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 40px;
+            margin-bottom: 60px;
+            color: var(--blue);
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .box {
+            background: var(--light);
+            height: 300px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        footer {
+            background: #111;
+            color: #ccc;
+            padding: 60px 20px;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+        }
+
+        footer h3 {
+            color: var(--blue2);
+            margin-bottom: 15px;
+        }
+
+        footer a {
+            color: #ccc;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 14px;
+            color: #777;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+
+            .grid-2,
+            .grid-3,
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+        }
+    </style>
     <!-- SEO -->
-    <meta name="description" content="Atlantis H2O Aquapark Viimsis – veeliumäed, basseinid, saunad, perepiletid, sünnipäevad ja elamused kogu perele.">
-    <meta name="keywords" content="aquapark, Viimsi, Atlantis H2O, veekeskus, saunad, perepuhkus">
-    <meta name="author" content="Atlantis H2O Aquapark">
+<meta name="description" content="Atlantis H2O Aquapark – veekeskus, atraktsioonid, perepuhkus Eestis">
+<meta name="keywords" content="aquapark, veekeskus, atlantis h2o, viimsis, perepuhkus">
+<meta name="author" content="Aquapark">
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="/css/style.css">
+<!-- Open Graph -->
+<meta property="og:title" content="Atlantis H2O Aquapark">
+<meta property="og:description" content="Eesti üks suurimaid veekeskusi ja seiklusparke">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://your-domain.ee/">
+<meta property="og:image" content="og-image.jpg">
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Atlantis H2O Aquapark">
+<meta name="twitter:description" content="Veekeskus ja seikluspark kogu perele">
+<meta name="twitter:image" content="og-image.jpg">
+
+<!-- FAVICON -->
+<link rel="icon" type="image/png" href="favicon.png">
 </head>
-
 <body>
 
-<!-- ================= HEADER ================= -->
-<header class="site-header">
-    <div class="container header-inner">
-
-        <a href="/index.html" class="logo">
-            <span class="logo-text">Atlantis H2O</span>
-        </a>
-
-        <nav class="main-nav">
-            <a href="/aquapark/index.html">Aquapark</a>
-            <a href="/saunas/index.html">Saunad</a>
-            <a href="/pricing/index.html">Hinnad</a>
-            <a href="/calendar/index.html">Kalender</a>
-            <a href="/gallery/photos.html">Galerii</a>
-            <a href="/contacts/index.html">Kontakt</a>
+<header>
+    <div class="header-inner">
+        <a href="#" class="logo">AQUAPARK</a>
+        <nav>
+            <a href="#home">Avaleht</a>
+            <a href="#about">Meist</a>
+            <a href="#attractions">Atraktsioonid</a>
+            <a href="#prices">Hinnad</a>
+            <a href="#contact">Kontakt</a>
         </nav>
-
-        <!-- Language dropdown -->
-        <div class="lang-dropdown">
-            <button class="lang-current">ET ▾</button>
-            <div class="lang-menu">
-                <a href="#">ET</a>
-                <a href="#">EN</a>
-                <a href="#">RU</a>
-                <a href="#">FI</a>
-                <a href="#">LV</a>
-            </div>
-        </div>
-
-        <button class="burger" id="burgerBtn">☰</button>
-
     </div>
 </header>
 
-<!-- ================= HERO ================= -->
-<section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-overlay"></div>
-
-    <div class="hero-content container">
-        <h1>Atlantis H2O Aquapark</h1>
-        <p>
-            Tere tulemast Eesti ühte erilisemasse veekeskusesse, kus kohtuvad
-            seiklus, lõõgastus ja perega koos veedetud kvaliteetaeg.
-        </p>
-
-        <div class="hero-actions">
-            <a href="/tickets/index.html" class="btn btn-primary">Osta pilet</a>
-            <a href="/aquapark/index.html" class="btn btn-secondary">Tutvu aladega</a>
-        </div>
+<section class="hero" id="home">
+    <div>
+        <h1>ATLANTIS H2O</h1>
+        <p>Veekeskus ja seikluspark</p>
+        <a href="#prices" class="btn">Osta pilet</a>
     </div>
 </section>
 
-<!-- ================= INTRO ================= -->
-<section class="section">
+<section id="about">
     <div class="container">
-        <h2 class="section-title">Elamus kogu perele</h2>
-
-        <p class="section-text">
-            Atlantis H2O Aquapark asub Viimsi SPA kompleksis ning pakub
-            mitmekesist veemõnude maailma nii lastele, noortele kui ka täiskasvanutele.
-            Meie veekeskus on loodud selleks, et pakkuda külastajatele nii aktiivset
-            ajaveetmist kui ka rahulikku lõõgastust.
-        </p>
-
-        <p class="section-text">
-            Veekeskuses leidub mitmeid veeliumägesid, erineva sügavusega basseine,
-            mullivanne ning lõõgastusalasid. Lisaks on võimalik külastada
-            mitmeid saunasid ning nautida veeprotseduure igal aastaajal.
-        </p>
+        <h2 class="section-title">Meist</h2>
+        <div class="grid-2">
+            <div class="box">TEXT</div>
+            <div class="box">IMAGE</div>
+        </div>
     </div>
 </section>
 
-<!-- ================= AQUAPARK PREVIEW ================= -->
-<section class="section section-light">
+<section id="attractions">
     <div class="container">
-        <h2 class="section-title">Aquapark</h2>
-
-        <div class="cards-grid">
-            <a href="/aquapark/slides.html" class="card">
-                <h3>Veeliumäed</h3>
-                <p>
-                    Kiired ja põnevad liutorud neile, kes armastavad adrenaliini ja
-                    veeseiklusi.
-                </p>
-            </a>
-
-            <a href="/aquapark/pools.html" class="card">
-                <h3>Basseinid</h3>
-                <p>
-                    Sportlikud, lõõgastavad ja peresõbralikud basseinid igale vanusele.
-                </p>
-            </a>
-
-            <a href="/aquapark/kids.html" class="card">
-                <h3>Lasteala</h3>
-                <p>
-                    Turvaline ja rõõmus keskkond väiksematele külastajatele.
-                </p>
-            </a>
-        </div>
-
-        <div class="section-cta">
-            <a href="/aquapark/index.html" class="btn btn-primary">Vaata kõiki alasid</a>
+        <h2 class="section-title">Atraktsioonid</h2>
+        <div class="grid-3">
+            <div class="box">ITEM</div>
+            <div class="box">ITEM</div>
+            <div class="box">ITEM</div>
         </div>
     </div>
 </section>
 
-<!-- ================= SAUNAS PREVIEW ================= -->
-<section class="section">
+<section id="prices">
     <div class="container">
-        <h2 class="section-title">Saunad</h2>
-
-        <p class="section-text">
-            Saunamaailm Atlantis H2O Aquapargis pakub võimalust puhata ja taastuda.
-            Meie saunad sobivad ideaalselt nii pärast aktiivset ujumist
-            kui ka iseseisvaks lõõgastuseks.
-        </p>
-
-        <div class="cards-grid">
-            <a href="/saunas/index.html" class="card">
-                <h3>Soome saun</h3>
-                <p>Klassikaline kuiv saun sügavaks lõõgastuseks.</p>
-            </a>
-
-            <a href="/saunas/index.html" class="card">
-                <h3>Aurusaun</h3>
-                <p>Niiske kuumus hingamisteedele ja nahale.</p>
-            </a>
-
-            <a href="/saunas/index.html" class="card">
-                <h3>Jää- ja jahutusalad</h3>
-                <p>Värskendav kontrast kuumale saunale.</p>
-            </a>
-        </div>
-
-        <div class="section-cta">
-            <a href="/saunas/index.html" class="btn btn-secondary">Tutvu saunadega</a>
+        <h2 class="section-title">Hinnad</h2>
+        <div class="grid-3">
+            <div class="box">PRICE</div>
+            <div class="box">PRICE</div>
+            <div class="box">PRICE</div>
         </div>
     </div>
 </section>
 
-<!-- ================= PRICING PREVIEW ================= -->
-<section class="section section-light">
-    <div class="container">
-        <h2 class="section-title">Hinnad ja piletid</h2>
-
-        <p class="section-text">
-            Pakume erinevaid piletivalikuid vastavalt külastaja vanusele,
-            külastusajale ja vajadustele. Olemas on ka perepiletid ning
-            erihinnad hotellis peatujatele.
-        </p>
-
-        <div class="section-cta">
-            <a href="/pricing/index.html" class="btn btn-primary">Vaata hinnakirja</a>
-            <a href="/tickets/index.html" class="btn btn-secondary">Osta pilet</a>
+<footer id="contact">
+    <div class="footer-grid">
+        <div>
+            <h3>Aquapark</h3>
+            <p>INFO</p>
+        </div>
+        <div>
+            <h3>Lingid</h3>
+            <a href="#">Avaleht</a>
+            <a href="#">Meist</a>
+        </div>
+        <div>
+            <h3>Kontakt</h3>
+            <p>ADRESS</p>
+            <p>PHONE</p>
+        </div>
+        <div>
+            <h3>Sotsiaal</h3>
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
         </div>
     </div>
-</section>
-
-<!-- ================= CALENDAR PREVIEW ================= -->
-<section class="calendar-section">
-  <h2 class="calendar-title">Lahtioleku kalender</h2>
-
-  <div class="calendar-card">
-    <div class="calendar-header">
-      <button id="calPrev" class="cal-arrow">‹</button>
-      <div id="calMonth" class="cal-month"></div>
-      <button id="calNext" class="cal-arrow">›</button>
-    </div>
-
-    <div class="calendar-weekdays">
-      <span>E</span><span>T</span><span>K</span><span>N</span>
-      <span>R</span><span>L</span><span>P</span>
-    </div>
-
-    <div id="calendarGrid" class="calendar-grid"></div>
-
-    <div class="calendar-legend">
-      <div><span class="legend-box closed"></span> Suletud</div>
-      <div><span class="legend-box late"></span> 14:00–22:00</div>
-      <div><span class="legend-box short"></span> 10:00–18:00</div>
-      <div><span class="legend-box normal"></span> 10:00–22:00</div>
-      <div><span class="legend-box extended"></span> 10:00–21:00</div>
-    </div>
-  </div>
-</section>
-<!-- ================= BIRTHDAYS ================= -->
-<section class="section section-light">
-    <div class="container">
-        <h2 class="section-title">Sünnipäevad</h2>
-
-        <p class="section-text">
-            Korralda meeldejääv sünnipäev Atlantis H2O Aquapargis.
-            Pakume erinevaid sünnipäevapakette nii lastele kui ka noortele.
-        </p>
-
-        <div class="section-cta">
-            <a href="/birthdays/index.html" class="btn btn-secondary">Vaata sünnipäevapakette</a>
-        </div>
-    </div>
-</section>
-
-<!-- ================= GALLERY ================= -->
-<section class="section">
-    <div class="container">
-        <h2 class="section-title">Galerii</h2>
-
-        <p class="section-text">
-            Heida pilk meie galeriile ja saa aimu, milline elamus Sind
-            Atlantis H2O Aquapargis ootab.
-        </p>
-
-        <div class="section-cta">
-            <a href="/gallery/photos.html" class="btn btn-primary">Fotod</a>
-            <a href="/gallery/videos.html" class="btn btn-secondary">Videod</a>
-        </div>
-    </div>
-</section>
-
-<!-- ================= CONTACT ================= -->
-<section class="section section-light">
-    <div class="container">
-        <h2 class="section-title">Kontakt</h2>
-
-        <p class="section-text">
-            Kui Sul on küsimusi, võta meiega ühendust või külasta meid kohapeal.
-        </p>
-
-        <div class="contact-info">
-            <p><strong>Aadress:</strong> Ravi tee 1, Viimsi, Eesti</p>
-            <p><strong>Telefon:</strong> +372 666 7045</p>
-            <p><strong>E-post:</strong> info@aquapark.ee</p>
-        </div>
-
-        <div class="section-cta">
-            <a href="/contacts/index.html" class="btn btn-primary">Kontaktandmed</a>
-        </div>
-    </div>
-</section>
-
-<!-- ================= FOOTER ================= -->
-<footer class="site-footer">
-    <div class="container footer-inner">
-        <p>© 2026 Atlantis H2O Aquapark. Kõik õigused kaitstud.</p>
-        <a href="/admin/index.html">Admin</a>
+    <div class="copyright">
+        © 2026 Aquapark
     </div>
 </footer>
 
-<!-- ================= SCRIPTS ================= -->
-<script src="/js/main.js" defer></script>
-<script src="/js/lang.js" defer></script>
+<script>
+/* JS START */
+</script>
+<!-- ADMIN BUTTON -->
+<button id="adminBtn">ADMIN</button>
+
+<!-- ADMIN PANEL -->
+<div id="adminPanel">
+    <h2>ADMIN PANEL</h2>
+
+    <label>Hero title</label>
+    <input id="a_hero_title">
+
+    <label>Hero subtitle</label>
+    <input id="a_hero_subtitle">
+
+    <label>About text</label>
+    <textarea id="a_about"></textarea>
+
+    <label>Attraction 1</label>
+    <input id="a_attr1">
+
+    <label>Attraction 2</label>
+    <input id="a_attr2">
+
+    <label>Attraction 3</label>
+    <input id="a_attr3">
+
+    <label>Price 1</label>
+    <input id="a_price1">
+
+    <label>Price 2</label>
+    <input id="a_price2">
+
+    <label>Price 3</label>
+    <input id="a_price3">
+
+    <label>Contact text</label>
+    <textarea id="a_contact"></textarea>
+
+    <button onclick="saveAdmin()">SAVE</button>
+</div>
+
+<style>
+#adminBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: red;
+    color: #fff;
+    border: none;
+    padding: 15px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 9999;
+}
+
+#adminPanel {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 400px;
+    height: 100vh;
+    background: #fff;
+    padding: 20px;
+    z-index: 9998;
+    overflow-y: auto;
+    transition: 0.3s;
+    box-shadow: -5px 0 20px rgba(0,0,0,0.3);
+}
+
+#adminPanel.active {
+    right: 0;
+}
+
+#adminPanel label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+#adminPanel input,
+#adminPanel textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+}
+
+#adminPanel button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 12px;
+    background: black;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+</style>
+
+<script>
+const adminBtn = document.getElementById('adminBtn');
+const adminPanel = document.getElementById('adminPanel');
+
+adminBtn.onclick = () => {
+    adminPanel.classList.toggle('active');
+};
+
+function saveAdmin() {
+    const data = {
+        heroTitle: document.getElementById('a_hero_title').value,
+        heroSubtitle: document.getElementById('a_hero_subtitle').value,
+        about: document.getElementById('a_about').value,
+        attr1: document.getElementById('a_attr1').value,
+        attr2: document.getElementById('a_attr2').value,
+        attr3: document.getElementById('a_attr3').value,
+        price1: document.getElementById('a_price1').value,
+        price2: document.getElementById('a_price2').value,
+        price3: document.getElementById('a_price3').value,
+        contact: document.getElementById('a_contact').value
+    };
+
+    localStorage.setItem('cms', JSON.stringify(data));
+    applyData();
+}
+
+function applyData() {
+    const data = JSON.parse(localStorage.getItem('cms') || '{}');
+
+    if (data.heroTitle) document.querySelector('.hero h1').innerText = data.heroTitle;
+    if (data.heroSubtitle) document.querySelector('.hero p').innerText = data.heroSubtitle;
+    if (data.about) document.querySelector('#about .box').innerText = data.about;
+
+    const attrs = document.querySelectorAll('#attractions .box');
+    if (data.attr1) attrs[0].innerText = data.attr1;
+    if (data.attr2) attrs[1].innerText = data.attr2;
+    if (data.attr3) attrs[2].innerText = data.attr3;
+
+    const prices = document.querySelectorAll('#prices .box');
+    if (data.price1) prices[0].innerText = data.price1;
+    if (data.price2) prices[1].innerText = data.price2;
+    if (data.price3) prices[2].innerText = data.price3;
+
+    if (data.contact) document.querySelector('#contact p').innerText = data.contact;
+
+    document.getElementById('a_hero_title').value = data.heroTitle || '';
+    document.getElementById('a_hero_subtitle').value = data.heroSubtitle || '';
+    document.getElementById('a_about').value = data.about || '';
+    document.getElementById('a_attr1').value = data.attr1 || '';
+    document.getElementById('a_attr2').value = data.attr2 || '';
+    document.getElementById('a_attr3').value = data.attr3 || '';
+    document.getElementById('a_price1').value = data.price1 || '';
+    document.getElementById('a_price2').value = data.price2 || '';
+    document.getElementById('a_price3').value = data.price3 || '';
+    document.getElementById('a_contact').value = data.contact || '';
+}
+
+applyData();
+</script>
+<!-- IMAGE UPLOAD ADMIN -->
+<div id="imageAdmin">
+    <h3>IMAGES</h3>
+
+    <label>Hero background</label>
+    <input type="file" accept="image/*" onchange="uploadImage(event,'heroBg')">
+
+    <label>About image</label>
+    <input type="file" accept="image/*" onchange="uploadImage(event,'aboutImg')">
+
+    <label>Attraction 1</label>
+    <input type="file" accept="image/*" onchange="uploadImage(event,'attr1Img')">
+
+    <label>Attraction 2</label>
+    <input type="file" accept="image/*" onchange="uploadImage(event,'attr2Img')">
+
+    <label>Attraction 3</label>
+    <input type="file" accept="image/*" onchange="uploadImage(event,'attr3Img')">
+</div>
+
+<style>
+#imageAdmin {
+    margin-top: 30px;
+}
+
+#imageAdmin label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+</style>
+
+<script>
+function uploadImage(event, key) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const data = JSON.parse(localStorage.getItem('cms_images') || '{}');
+        data[key] = e.target.result;
+        localStorage.setItem('cms_images', JSON.stringify(data));
+        applyImages();
+    };
+    reader.readAsDataURL(file);
+}
+
+function applyImages() {
+    const data = JSON.parse(localStorage.getItem('cms_images') || '{}');
+
+    if (data.heroBg) {
+        document.querySelector('.hero').style.backgroundImage =
+            `linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)), url(${data.heroBg})`;
+        document.querySelector('.hero').style.backgroundSize = 'cover';
+        document.querySelector('.hero').style.backgroundPosition = 'center';
+    }
+
+    if (data.aboutImg) {
+        document.querySelector('#about .box:nth-child(2)').style.background =
+            `url(${data.aboutImg}) center/cover no-repeat`;
+        document.querySelector('#about .box:nth-child(2)').innerText = '';
+    }
+
+    const attrs = document.querySelectorAll('#attractions .box');
+
+    if (data.attr1Img) {
+        attrs[0].style.background = `url(${data.attr1Img}) center/cover no-repeat`;
+        attrs[0].innerText = '';
+    }
+
+    if (data.attr2Img) {
+        attrs[1].style.background = `url(${data.attr2Img}) center/cover no-repeat`;
+        attrs[1].innerText = '';
+    }
+
+    if (data.attr3Img) {
+        attrs[2].style.background = `url(${data.attr3Img}) center/cover no-repeat`;
+        attrs[2].innerText = '';
+    }
+}
+
+applyImages();
+</script>
+<!-- GALLERY SECTION -->
+<section id="gallery">
+    <div class="container">
+        <h2 class="section-title">Galerii</h2>
+        <div id="galleryGrid"></div>
+    </div>
+</section>
+
+<style>
+#galleryGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.gallery-item {
+    height: 260px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+}
+
+.gallery-item button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: red;
+    color: #fff;
+    border: none;
+    padding: 6px 10px;
+    cursor: pointer;
+    font-size: 12px;
+}
+</style>
+
+<!-- GALLERY ADMIN -->
+<div id="galleryAdmin">
+    <h3>GALLERY</h3>
+    <input type="file" accept="image/*" onchange="addGalleryImage(event)">
+</div>
+
+<style>
+#galleryAdmin {
+    margin-top: 30px;
+}
+</style>
+
+<script>
+function addGalleryImage(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const images = JSON.parse(localStorage.getItem('cms_gallery') || '[]');
+        images.push(e.target.result);
+        localStorage.setItem('cms_gallery', JSON.stringify(images));
+        renderGallery();
+    };
+    reader.readAsDataURL(file);
+}
+
+function removeGalleryImage(index) {
+    const images = JSON.parse(localStorage.getItem('cms_gallery') || '[]');
+    images.splice(index, 1);
+    localStorage.setItem('cms_gallery', JSON.stringify(images));
+    renderGallery();
+}
+
+function renderGallery() {
+    const grid = document.getElementById('galleryGrid');
+    const images = JSON.parse(localStorage.getItem('cms_gallery') || '[]');
+    grid.innerHTML = '';
+
+    images.forEach((img, index) => {
+        const div = document.createElement('div');
+        div.className = 'gallery-item';
+        div.style.backgroundImage = `url(${img})`;
+
+        const btn = document.createElement('button');
+        btn.innerText = 'X';
+        btn.onclick = () => removeGalleryImage(index);
+
+        div.appendChild(btn);
+        grid.appendChild(div);
+    });
+}
+
+renderGallery();
+</script>
+<!-- MOBILE MENU BUTTON -->
+<button id="mobileMenuBtn">☰</button>
+
+<!-- MOBILE MENU -->
+<div id="mobileMenu">
+    <a href="#home" onclick="toggleMobile()">Avaleht</a>
+    <a href="#about" onclick="toggleMobile()">Meist</a>
+    <a href="#attractions" onclick="toggleMobile()">Atraktsioonid</a>
+    <a href="#prices" onclick="toggleMobile()">Hinnad</a>
+    <a href="#gallery" onclick="toggleMobile()">Galerii</a>
+    <a href="#contact" onclick="toggleMobile()">Kontakt</a>
+</div>
+
+<style>
+#mobileMenuBtn {
+    display: none;
+    position: fixed;
+    top: 18px;
+    right: 20px;
+    z-index: 3000;
+    background: var(--orange);
+    color: #fff;
+    border: none;
+    padding: 10px 14px;
+    font-size: 22px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#mobileMenu {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, #0066cc, #0080ff);
+    z-index: 2999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(100%);
+    transition: 0.35s ease;
+}
+
+#mobileMenu.active {
+    transform: translateX(0);
+}
+
+#mobileMenu a {
+    color: #fff;
+    font-size: 28px;
+    margin: 15px 0;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    nav {
+        display: none;
+    }
+
+    #mobileMenuBtn {
+        display: block;
+    }
+}
+</style>
+
+<script>
+function toggleMobile() {
+    document.getElementById('mobileMenu').classList.toggle('active');
+}
+
+document.getElementById('mobileMenuBtn').onclick = toggleMobile;
+</script>
+<!-- LANGUAGE SWITCHER -->
+<div id="langSwitcher">
+    <button onclick="setLang('et')">EE</button>
+    <button onclick="setLang('ru')">RU</button>
+    <button onclick="setLang('en')">EN</button>
+</div>
+
+<style>
+#langSwitcher {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    z-index: 3000;
+}
+
+#langSwitcher button {
+    margin-left: 5px;
+    padding: 6px 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+</style>
+
+<script>
+const LANG_DATA = {
+    et: {
+        heroTitle: "ATLANTIS H2O",
+        heroSubtitle: "Veekeskus ja seikluspark",
+        about: "Meist",
+        attractions: "Atraktsioonid",
+        prices: "Hinnad",
+        gallery: "Galerii",
+        contact: "Kontakt"
+    },
+    ru: {
+        heroTitle: "ATLANTIS H2O",
+        heroSubtitle: "Аквапарк и центр развлечений",
+        about: "О нас",
+        attractions: "Аттракционы",
+        prices: "Цены",
+        gallery: "Галерея",
+        contact: "Контакты"
+    },
+    en: {
+        heroTitle: "ATLANTIS H2O",
+        heroSubtitle: "Waterpark and adventure center",
+        about: "About",
+        attractions: "Attractions",
+        prices: "Prices",
+        gallery: "Gallery",
+        contact: "Contact"
+    }
+};
+
+function setLang(lang) {
+    localStorage.setItem('lang', lang);
+    applyLang();
+}
+
+function applyLang() {
+    const lang = localStorage.getItem('lang') || 'et';
+    const t = LANG_DATA[lang];
+
+    document.querySelector('.hero h1').innerText = t.heroTitle;
+    document.querySelector('.hero p').innerText = t.heroSubtitle;
+
+    document.querySelector('#about .section-title').innerText = t.about;
+    document.querySelector('#attractions .section-title').innerText = t.attractions;
+    document.querySelector('#prices .section-title').innerText = t.prices;
+    document.querySelector('#gallery .section-title').innerText = t.gallery;
+    document.querySelector('#contact h3').innerText = t.contact;
+}
+
+applyLang();
+</script>
+<style>
+/* SMOOTH SCROLL */
+html {
+    scroll-behavior: smooth;
+}
+
+/* HEADER SHRINK */
+header.shrink {
+    padding: 5px 0;
+    background: linear-gradient(135deg, #005bb5, #0073e6);
+}
+
+header.shrink .logo {
+    font-size: 22px;
+}
+
+/* FADE-IN ANIMATIONS */
+.fade {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 0.6s ease;
+}
+
+.fade.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+</style>
+
+<script>
+/* HEADER SHRINK ON SCROLL */
+window.addEventListener('scroll', () => {
+    const header = document.querySelector('header');
+    if (window.scrollY > 80) {
+        header.classList.add('shrink');
+    } else {
+        header.classList.remove('shrink');
+    }
+});
+
+/* FADE-IN OBSERVER */
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, {
+    threshold: 0.15
+});
+
+document.querySelectorAll('section, .box, .gallery-item').forEach(el => {
+    el.classList.add('fade');
+    observer.observe(el);
+});
+</script>
+<!-- TICKET MODAL -->
+<div id="ticketModal">
+    <div class="ticket-content">
+        <button class="ticket-close" onclick="closeTicket()">×</button>
+        <h2>Osta pilet</h2>
+
+        <label>Nimi</label>
+        <input type="text" placeholder="Sinu nimi">
+
+        <label>Email</label>
+        <input type="email" placeholder="email@example.com">
+
+        <label>Pilet</label>
+        <select>
+            <option>Täiskasvanu</option>
+            <option>Laps</option>
+            <option>Pere</option>
+        </select>
+
+        <label>Kogus</label>
+        <input type="number" value="1" min="1">
+
+        <button class="ticket-buy">Edasi maksmisele</button>
+    </div>
+</div>
+
+<style>
+#ticketModal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 5000;
+}
+
+#ticketModal.active {
+    display: flex;
+}
+
+.ticket-content {
+    background: #fff;
+    width: 100%;
+    max-width: 420px;
+    padding: 30px;
+    border-radius: 15px;
+    position: relative;
+}
+
+.ticket-content h2 {
+    margin-bottom: 20px;
+    color: var(--blue);
+}
+
+.ticket-content label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.ticket-content input,
+.ticket-content select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+}
+
+.ticket-buy {
+    margin-top: 25px;
+    width: 100%;
+    padding: 15px;
+    background: var(--orange);
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 30px;
+}
+
+.ticket-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 26px;
+    cursor: pointer;
+}
+</style>
+
+<script>
+function openTicket() {
+    document.getElementById('ticketModal').classList.add('active');
+}
+
+function closeTicket() {
+    document.getElementById('ticketModal').classList.remove('active');
+}
+
+/* CONNECT ALL BUY BUTTONS */
+document.querySelectorAll('.btn').forEach(btn => {
+    btn.addEventListener('click', e => {
+        if (btn.innerText.toLowerCase().includes('osta')) {
+            e.preventDefault();
+            openTicket();
+        }
+    });
+});
+</script>
+<!-- HOW TO GET / MAP -->
+<section id="howto">
+    <div class="container">
+        <h2 class="section-title">Kuidas tulla</h2>
+
+        <div class="howto-grid">
+            <div class="howto-info">
+                <h3>📍 Asukoht</h3>
+                <p>Randvere tee 11, Viimsi, Eesti</p>
+
+                <h3>🚗 Autoga</h3>
+                <p>Kesklinnast ca 15 min. Tasuta parkimine külastajatele.</p>
+
+                <h3>🚌 Ühistransport</h3>
+                <p>Bussid Tallinnast Viimsisse, peatus jalutuskäigu kaugusel.</p>
+
+                <h3>☎ Kontakt</h3>
+                <p>Telefon: +372 606 6000</p>
+                <p>Email: info@aquapark.ee</p>
+            </div>
+
+            <div class="howto-map">
+                <iframe
+                    src="https://maps.google.com/maps?q=Viimsi&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                    loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.howto-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: stretch;
+}
+
+.howto-info h3 {
+    margin-top: 20px;
+    color: var(--blue);
+}
+
+.howto-info p {
+    margin-top: 5px;
+    line-height: 1.6;
+}
+
+.howto-map iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+    border: 0;
+    border-radius: 15px;
+}
+
+@media (max-width: 768px) {
+    .howto-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .howto-map iframe {
+        min-height: 300px;
+    }
+}
+</style>
+<!-- CONTACT FORM -->
+<section id="feedback">
+    <div class="container">
+        <h2 class="section-title">Võta meiega ühendust</h2>
+
+        <form id="contactForm" class="contact-form">
+            <input type="text" placeholder="Nimi" required>
+            <input type="email" placeholder="Email" required>
+            <textarea placeholder="Sõnum" required></textarea>
+            <button type="submit">Saada</button>
+        </form>
+    </div>
+</section>
+
+<!-- FORM MESSAGE -->
+<div id="formMessage">Sõnum saadetud!</div>
+
+<style>
+.contact-form {
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form input,
+.contact-form textarea {
+    margin-bottom: 15px;
+    padding: 12px;
+    font-size: 15px;
+}
+
+.contact-form textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.contact-form button {
+    background: var(--orange);
+    color: #fff;
+    border: none;
+    padding: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 30px;
+}
+
+#formMessage {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: green;
+    color: #fff;
+    padding: 15px 30px;
+    border-radius: 30px;
+    display: none;
+    z-index: 6000;
+}
+</style>
+
+<script>
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const msg = document.getElementById('formMessage');
+    msg.style.display = 'block';
+
+    setTimeout(() => {
+        msg.style.display = 'none';
+    }, 3000);
+
+    this.reset();
+});
+</script>
+<!-- PERFORMANCE OPTIMIZATION -->
+<style>
+/* IMAGE PLACEHOLDER */
+.lazy {
+    background-color: #eaeaea;
+}
+
+/* REDUCE MOTION */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+</style>
+
+<script>
+/* LAZY LOAD BACKGROUNDS */
+const lazyBgObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const el = entry.target;
+            const bg = el.getAttribute('data-bg');
+            if (bg) {
+                el.style.backgroundImage = `url(${bg})`;
+                el.removeAttribute('data-bg');
+            }
+            lazyBgObserver.unobserve(el);
+        }
+    });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('[data-bg]').forEach(el => {
+    el.classList.add('lazy');
+    lazyBgObserver.observe(el);
+});
+
+/* PRELOAD HERO IMAGE IF EXISTS */
+(function preloadHero(){
+    const hero = document.querySelector('.hero');
+    const bg = hero && hero.style.backgroundImage;
+    if (bg && bg.includes('url')) {
+        const url = bg.match(/url\((['"])?(.*?)\1\)/)[2];
+        const img = new Image();
+        img.src = url;
+    }
+})();
+
+/* BASIC ERROR GUARD */
+window.addEventListener('error', function(e) {
+    console.warn('Handled error:', e.message);
+});
+
+/* FINAL READY FLAG */
+document.documentElement.classList.add('site-ready');
+</script>
+<script>
+/* BACKEND URL */
+const API = 'http://localhost:3000/api';
+
+/* ================= CMS SYNC ================= */
+
+/* LOAD CMS FROM SERVER */
+async function loadCMSFromServer() {
+    try {
+        const res = await fetch(API + '/cms');
+        const data = await res.json();
+        localStorage.setItem('cms', JSON.stringify(data));
+        applyData();
+    } catch (e) {
+        console.warn('CMS load failed');
+    }
+}
+
+/* SAVE CMS TO SERVER */
+async function saveCMSOnServer() {
+    const data = JSON.parse(localStorage.getItem('cms') || '{}');
+    await fetch(API + '/cms', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+    });
+}
+
+/* OVERRIDE SAVE */
+const oldSaveAdmin = saveAdmin;
+saveAdmin = function () {
+    oldSaveAdmin();
+    saveCMSOnServer();
+};
+
+/* AUTO LOAD */
+loadCMSFromServer();
+
+/* ================= CONTACT FORM ================= */
+
+const form = document.getElementById('contactForm');
+
+if (form) {
+    form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        const payload = {
+            name: this.querySelector('input[type="text"]').value,
+            email: this.querySelector('input[type="email"]').value,
+            message: this.querySelector('textarea').value
+        };
+
+        await fetch(API + '/message', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        });
+
+        const msg = document.getElementById('formMessage');
+        msg.style.display = 'block';
+        setTimeout(() => msg.style.display = 'none', 3000);
+
+        this.reset();
+    });
+}
+
+/* ================= PAYMENT MOCK ================= */
+
+async function payMock(data) {
+    const res = await fetch(API + '/pay', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+    });
+    return res.json();
+}
+
+/* CONNECT PAY BUTTON */
+const payBtn = document.querySelector('.ticket-buy');
+if (payBtn) {
+    payBtn.onclick = async () => {
+        const result = await payMock({
+            ticket: 'TEST',
+            amount: 1
+        });
+        alert('PAYMENT OK: ' + result.paymentId);
+        closeTicket();
+    };
+}
+</script>
+<!-- DEV PANEL -->
+<div id="devPanel">
+    <button onclick="toggleDev()">DEV</button>
+
+    <div id="devContent">
+        <button onclick="backupData()">BACKUP</button>
+        <button onclick="restoreData()">RESTORE</button>
+        <button onclick="seedData()">SEED</button>
+        <button onclick="clearStorage()">CLEAR</button>
+        <pre id="devLog"></pre>
+    </div>
+</div>
+
+<style>
+#devPanel {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 9000;
+}
+
+#devPanel button {
+    padding: 10px 15px;
+    font-weight: bold;
+}
+
+#devContent {
+    display: none;
+    margin-top: 10px;
+    background: #111;
+    color: #0f0;
+    padding: 15px;
+    width: 300px;
+}
+
+#devContent button {
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+#devLog {
+    font-size: 11px;
+    max-height: 200px;
+    overflow: auto;
+}
+</style>
+
+<script>
+function toggleDev() {
+    const el = document.getElementById('devContent');
+    el.style.display = el.style.display === 'block' ? 'none' : 'block';
+}
+
+function log(msg) {
+    const logEl = document.getElementById('devLog');
+    logEl.textContent += msg + '\n';
+}
+
+function backupData() {
+    const data = {
+        cms: localStorage.getItem('cms'),
+        images: localStorage.getItem('cms_images'),
+        gallery: localStorage.getItem('cms_gallery'),
+        lang: localStorage.getItem('lang')
+    };
+    const blob = new Blob([JSON.stringify(data, null, 2)], {type:'application/json'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'backup.json';
+    a.click();
+    log('BACKUP CREATED');
+}
+
+function restoreData() {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.onchange = e => {
+        const reader = new FileReader();
+        reader.onload = ev => {
+            const d = JSON.parse(ev.target.result);
+            if (d.cms) localStorage.setItem('cms', d.cms);
+            if (d.images) localStorage.setItem('cms_images', d.images);
+            if (d.gallery) localStorage.setItem('cms_gallery', d.gallery);
+            if (d.lang) localStorage.setItem('lang', d.lang);
+            location.reload();
+        };
+        reader.readAsText(e.target.files[0]);
+    };
+    input.click();
+}
+
+function seedData() {
+    localStorage.setItem('cms', JSON.stringify({
+        heroTitle: "ATLANTIS H2O",
+        heroSubtitle: "DEV MODE",
+        about: "TEST CONTENT",
+        attr1: "SLIDE",
+        attr2: "POOL",
+        attr3: "SPA",
+        price1: "20€",
+        price2: "50€",
+        price3: "12€",
+        contact: "TEST CONTACT"
+    }));
+    location.reload();
+}
+
+function clearStorage() {
+    localStorage.clear();
+    location.reload();
+}
+
+log('DEV PANEL READY');
+</script>
+<script>
+/* ================= ROLES ================= */
+
+/*
+ROLES:
+- viewer (default)
+- admin
+*/
+
+const ROLE_KEY = 'role';
+const ADMIN_PIN = '1234';
+
+/* INIT ROLE */
+if (!localStorage.getItem(ROLE_KEY)) {
+    localStorage.setItem(ROLE_KEY, 'viewer');
+}
+
+/* SET ROLE */
+function setRole(role) {
+    localStorage.setItem(ROLE_KEY, role);
+    applyRole();
+}
+
+/* APPLY ROLE */
+function applyRole() {
+    const role = localStorage.getItem(ROLE_KEY);
+
+    /* ADMIN UI */
+    const adminBtn = document.getElementById('adminBtn');
+    const adminPanel = document.getElementById('adminPanel');
+    const devPanel = document.getElementById('devPanel');
+
+    if (role === 'admin') {
+        if (adminBtn) adminBtn.style.display = 'block';
+        if (devPanel) devPanel.style.display = 'block';
+    } else {
+        if (adminBtn) adminBtn.style.display = 'none';
+        if (adminPanel) adminPanel.classList.remove('active');
+        if (devPanel) devPanel.style.display = 'none';
+    }
+}
+
+/* ADMIN LOGIN PROMPT */
+function adminLogin() {
+    const pin = prompt('ADMIN PIN');
+    if (pin === ADMIN_PIN) {
+        setRole('admin');
+        alert('ADMIN ENABLED');
+    } else {
+        alert('WRONG PIN');
+    }
+}
+
+/* ADMIN LOGOUT */
+function adminLogout() {
+    setRole('viewer');
+    alert('ADMIN DISABLED');
+}
+
+/* HOTKEY: CTRL + ALT + A */
+document.addEventListener('keydown', e => {
+    if (e.ctrlKey && e.altKey && e.key.toLowerCase() === 'a') {
+        adminLogin();
+    }
+});
+
+/* ADD LOGOUT BUTTON TO ADMIN PANEL */
+(function injectLogout(){
+    const panel = document.getElementById('adminPanel');
+    if (!panel) return;
+
+    const btn = document.createElement('button');
+    btn.innerText = 'LOGOUT ADMIN';
+    btn.style.marginTop = '20px';
+    btn.style.background = '#333';
+    btn.style.color = '#fff';
+    btn.onclick = adminLogout;
+
+    panel.appendChild(btn);
+})();
+
+/* APPLY ON LOAD */
+applyRole();
+</script>
+<script>
+/* ================= READ ONLY MODE ================= */
+
+function applyPermissions() {
+    const role = localStorage.getItem('role') || 'viewer';
+
+    /* ADMIN ELEMENTS */
+    const adminPanel = document.getElementById('adminPanel');
+    const adminBtn = document.getElementById('adminBtn');
+    const devPanel = document.getElementById('devPanel');
+
+    /* EDITABLE FORMS */
+    const adminInputs = document.querySelectorAll(
+        '#adminPanel input, #adminPanel textarea, #adminPanel button'
+    );
+
+    if (role === 'viewer') {
+        /* hide admin ui */
+        if (adminBtn) adminBtn.style.display = 'none';
+        if (adminPanel) adminPanel.classList.remove('active');
+        if (devPanel) devPanel.style.display = 'none';
+
+        /* disable admin controls */
+        adminInputs.forEach(el => {
+            el.disabled = true;
+        });
+
+        /* disable gallery delete */
+        document.querySelectorAll('.gallery-item button').forEach(btn => {
+            btn.style.display = 'none';
+        });
+
+    } else if (role === 'admin') {
+        /* show admin ui */
+        if (adminBtn) adminBtn.style.display = 'block';
+        if (devPanel) devPanel.style.display = 'block';
+
+        /* enable admin controls */
+        adminInputs.forEach(el => {
+            el.disabled = false;
+        });
+
+        /* enable gallery delete */
+        document.querySelectorAll('.gallery-item button').forEach(btn => {
+            btn.style.display = 'block';
+        });
+    }
+}
+
+/* BLOCK FORM SUBMIT FOR VIEWER (SAFETY) */
+document.addEventListener('submit', function(e) {
+    const role = localStorage.getItem('role') || 'viewer';
+    if (role !== 'admin' && e.target.closest('#adminPanel')) {
+        e.preventDefault();
+        alert('READ ONLY MODE');
+    }
+}, true);
+
+/* REAPPLY AFTER GALLERY RENDER */
+const oldRenderGallery = renderGallery;
+renderGallery = function () {
+    oldRenderGallery();
+    applyPermissions();
+};
+
+/* APPLY ON LOAD */
+applyPermissions();
+</script>
 
 </body>
 </html>
